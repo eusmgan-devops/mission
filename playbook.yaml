@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   sudo: true
   remote_user: root
 
@@ -7,33 +7,35 @@
 
   - name: Include OS-Specific variables
     include_vars: "jenkins.yml"
+
   - name: Ensure Jenkins repo is installed.
     get_url:
       url: "{{ jenkins_repo_url }}"
       dest: /etc/yum.repos.d/jenkins.repo
+
+  - name: Get Drupal tar.
+    get_url:
+      url: "{{ drupal_url }}"
+      dest: .
+
+  - unarchive: src="{{ drupal_tar }}" dest=.
 
   - name: Add Jenkins repo GPG key.
     rpm_key:
       state: present
       key: "{{ jenkins_repo_key_url }}"
 
+  - name: install apache
+    yum: pkg=httpd state=latest
+
   - name: install java
     yum: pkg=java state=latest
-
-  - name: install tomcat
-    yum: pkg=tomcat state=latest
 
   - name: install epel-release
     yum: pkg=epel-release state=latest
 
-  - name: install maven
-    yum: pkg=maven2 state=latest
-
   - name: install git
     yum: pkg=git state=latest
-
-  - name: install nginx
-    yum: pkg=nginx state=latest
 
   - name: install jenkins
     yum: pkg=jenkins state=latest
@@ -43,8 +45,3 @@
 
   - name: start jenkins
     service: name=jenkins state=started enabled=yes
-
-  - name: start nginx
-    service: name=nginx state=started enabled=yes
-
-
