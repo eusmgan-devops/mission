@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   sudo: true
   remote_user: root
 
@@ -13,12 +13,6 @@
       url: "{{ jenkins_repo_url }}"
       dest: /etc/yum.repos.d/jenkins.repo
 
-  - name: Get Drupal tar.
-    get_url:
-      url: "{{ drupal_url }}"
-      dest: .
-
-  - unarchive: src="{{ drupal_tar }}" dest=.
 
   - name: Add Jenkins repo GPG key.
     rpm_key:
@@ -27,6 +21,21 @@
 
   - name: install apache
     yum: pkg=httpd state=latest
+
+  - name: install php
+    yum: pkg=php state=latest
+
+  - name: install php-mysql
+    yum: pkg=php-mysql state=latest
+
+  - name: install the mysql-server rpm from a remote repo
+    yum: name=http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm state=present
+
+  - name: install mysql-server
+    yum: pkg=mysql-server state=latest
+
+  - name: install mysql
+    yum: pkg=mysql state=latest
 
   - name: install java
     yum: pkg=java state=latest
@@ -40,8 +49,10 @@
   - name: install jenkins
     yum: pkg=jenkins state=latest
 
-#  - name: change nginx default config
-#    template: src=files/nginx.conf.j2 dest=/etc/nginx/nginx.conf
-
   - name: start jenkins
     service: name=jenkins state=started enabled=yes
+
+  - name: start apache
+    service: name=httpd state=started enabled=yes
+
+
