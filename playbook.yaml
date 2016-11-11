@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: localhost
   sudo: true
   remote_user: root
 
@@ -27,12 +27,6 @@
 
   - name: install php-mysql
     yum: pkg=php-mysql state=latest
-
-  - name: install the mysql-server rpm from a remote repo
-    yum: name=http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm state=present
-
-  - name: install mysql-server
-    yum: pkg=mysql-server state=latest
 
   - name: install mysql
     yum: pkg=mysql state=latest
