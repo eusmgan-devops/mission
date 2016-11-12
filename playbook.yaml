@@ -26,19 +26,19 @@
     yum: pkg=php state=latest
 
   - name: install php-gd
-    yum: pkg=httpd state=latest
+    yum: pkg=php-gd state=latest
 
   - name: install php-dom
-    yum: pkg=httpd state=latest
+    yum: pkg=php-dom state=latest
 
   - name: install php-mbstring
-    yum: pkg=httpd state=latest
+    yum: pkg=php-mbstring state=latest
 
   - name: install php-mysql
     yum: pkg=php-mysql state=latest
 
   - name: install mysql-server
-    yum: pkg=php-mysql-server state=latest
+    yum: pkg=mysql-server state=latest
 
   - name: install mysql
     yum: pkg=mysql state=latest
