@@ -25,8 +25,20 @@
   - name: install php
     yum: pkg=php state=latest
 
+  - name: install php-gd
+    yum: pkg=httpd state=latest
+
+  - name: install php-dom
+    yum: pkg=httpd state=latest
+
+  - name: install php-mbstring
+    yum: pkg=httpd state=latest
+
   - name: install php-mysql
     yum: pkg=php-mysql state=latest
+
+  - name: install mysql-server
+    yum: pkg=php-mysql-server state=latest
 
   - name: install mysql
     yum: pkg=mysql state=latest
@@ -49,4 +61,7 @@
   - name: start apache
     service: name=httpd state=started enabled=yes
 
+
+  - name: start mysqld
+    service: name=mysqld state=started enabled=yes
 
