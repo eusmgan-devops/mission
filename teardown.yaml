@@ -1,0 +1,10 @@
+---
+- hosts: localhost
+  connection: local
+  become: False
+  tasks:
+  - name: teardown ansible cloudformation
+    cloudformation:
+      stack_name: "ansible-cloudformation"
+      state: "absent"
+      region: "eu-west-1"

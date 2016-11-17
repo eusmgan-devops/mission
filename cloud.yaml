@@ -1,0 +1,14 @@
+---
+- hosts: localhost
+  connection: local
+  become: False
+  tasks:
+  - name: launch ansible cloudformation
+    cloudformation:
+      stack_name: "ansible-cloudformation"
+      state: "present"
+      region: "eu-west-1"
+      disable_rollback: true
+      template: "cloudformation.template"
+      tags:
+        Stack: "ansible-cloudformation"
