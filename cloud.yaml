@@ -10,5 +10,7 @@
       region: "eu-west-1"
       disable_rollback: true
       template: "cloudformation.template"
+      template_parameters:
+        PublicSubnet1: "subnet-b9c8b7dd"
       tags:
         Stack: "ansible-cloudformation"

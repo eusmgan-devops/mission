@@ -1,0 +1,10 @@
+---
+# file: site.yaml
+- hosts: localhost
+  vars_files:
+    - 'vars/{{ environment }}_vars.yaml'
+  connection: local
+  become: True
+  tasks: 
+    - include: nexus.yaml
+#    - include: jenkins.yaml
