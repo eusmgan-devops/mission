@@ -1,0 +1,6 @@
+to get url of latest nexus repo
+https://support.sonatype.com/hc/en-us/articles/218637467-Download-Nexus-Repository-Manager-3
+
+http://download.sonatype.com/nexus/3/nexus-3.1.0-04-unix.tar.gz
+
+ansible-playbook --extra-vars "environment=sandbox" site.yaml
