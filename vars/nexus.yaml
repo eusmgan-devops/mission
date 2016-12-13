@@ -1,0 +1,8 @@
+---
+version: 1.4.1
+http_port: 80
+max_clients: 200
+jenkins_repo_url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+jenkins_repo_key_url:  https://jenkins-ci.org/redhat/jenkins-ci.org.key
+drupal_url: https://ftp.drupal.org/files/projects/drupal-8.2.2.tar.gz
+drupal_tar: drupal-8.2.2.tar.gz

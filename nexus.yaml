@@ -1,0 +1,4 @@
+- name: Include OS-Specific variables
+  include_vars: "nexus.yaml"
+
+- command:  bash scripts/nexus.sh {{ version }}
