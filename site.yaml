@@ -6,5 +6,5 @@
   connection: local
   become: True
   tasks: 
-    - include: nexus.yaml
-#    - include: jenkins.yaml
+#    - include: nexus.yaml
+    - include: jenkins.yaml
