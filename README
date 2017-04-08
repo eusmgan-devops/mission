@@ -4,3 +4,6 @@ https://support.sonatype.com/hc/en-us/articles/218637467-Download-Nexus-Reposito
 http://download.sonatype.com/nexus/3/nexus-3.1.0-04-unix.tar.gz
 
 ansible-playbook --extra-vars "environment=sandbox" site.yaml
+
+sudo yum install epel-release
+sudo vim /etc/yum.repos.d/epel.repo change enabled=1
